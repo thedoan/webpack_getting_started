@@ -4,7 +4,8 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
 	entry: [
-		'./src/index.js', './src/print.js'
+		'./src/clients/js/app.js',
+		'./src/clients/js/vue.js'
 	],
 	devtool: 'inline-source-map',
 	output: {
@@ -18,7 +19,7 @@ module.exports = {
 	},
 	module:{
 		rules: [
-		{
+		/*{
 			test: /\.js$/,
 			exclude: /(node_modules|bower_components)/,
 			use: {
@@ -34,7 +35,7 @@ module.exports = {
 				fallback: 'style-loader',
 				use: 'css-loader'
 			})
-		},
+		},*/
 		{
 			test: /\.(png|svg|jpg|gif)$/,
 			use: [
@@ -49,11 +50,18 @@ module.exports = {
 		}
 		]
 	},
+	resolve:{
+		alias:{
+			'vue$':'vue/dist/vue.esm.js'
+		}
+	},
 	plugins: [
-	new CleanWebpackPlugin(['dist'],{
+	/*new CleanWebpackPlugin(['dist'],{
 			exclude: ['index.html']
 		}),
 	new webpack.optimize.UglifyJsPlugin(),
+	
 	new ExtractTextPlugin("css/app.css"),
+	*/
 	]
 }
