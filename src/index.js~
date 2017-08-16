@@ -1,0 +1,9 @@
+console.log("index.js")
+import './style.css';
+import icon from './icon.png';
+function component(){
+	var element = document.createElement('div');
+	element.classlist.add('hello');
+	return element;
+}
+document.body.appendChild(component());
