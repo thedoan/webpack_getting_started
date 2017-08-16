@@ -1,24 +1,32 @@
+const webpack = require('webpack')
 const path = require('path')
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
-	entry: {
-		bundle: './src/index.js'
-	},
+	entry: [
+		'./src/index.js', './src/print.js'
+	],
+	devtool: 'inline-source-map',
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'js/bundle.js'
 	},
+	devServer: {
+		contentBase: 'dist',
+		compress: true,
+		port: 9000
+	},
 	module:{
 		rules: [
 		{
-		  test: /\.js$/,
-		  exclude: /(node_modules|bower_components)/,
-		  use: {
-			loader: 'babel-loader',
-			options: {
-			  presets: ['env']
+			test: /\.js$/,
+			exclude: /(node_modules|bower_components)/,
+			use: {
+				loader: 'babel-loader',
+				options: {
+					presets: ['env']
+				}
 			}
-		  }
 		},
 		{
 			test:/\.css$/,
@@ -42,6 +50,10 @@ module.exports = {
 		]
 	},
 	plugins: [
-		new ExtractTextPlugin("css/app.css"),
+	new CleanWebpackPlugin(['dist'],{
+			exclude: ['index.html']
+		}),
+	new webpack.optimize.UglifyJsPlugin(),
+	new ExtractTextPlugin("css/app.css"),
 	]
 }
