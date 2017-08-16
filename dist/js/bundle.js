@@ -65,28 +65,31 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__style_css__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__style_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_png__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__icon_png__);
-console.log("index.js")
 
 
-function component(){
+__webpack_require__(1);
+
+var _icon = __webpack_require__(2);
+
+var _icon2 = _interopRequireDefault(_icon);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+console.log("index.js");
+
+function component() {
 	var element = document.createElement('div');
 	element.classlist.add('hello');
 	//Add the image to our existing div.
 	var myIcon = new Image();
-	myIcon.src = __WEBPACK_IMPORTED_MODULE_1__icon_png___default.a;
+	myIcon.src = _icon2.default;
 	element.appendChild(myIcon);
 	return element;
 }
 document.body.appendChild(component());
-
 
 /***/ }),
 /* 1 */
